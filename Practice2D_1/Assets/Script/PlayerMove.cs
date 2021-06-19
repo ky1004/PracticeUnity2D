@@ -6,10 +6,27 @@ public class PlayerMove : MonoBehaviour
 {
     public float maxSpeed;
     Rigidbody2D rigid;
+    SpriteRenderer spRenderer;
 
     void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();    
+        rigid = GetComponent<Rigidbody2D>();
+        spRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonUp("Horizontal"))
+        {
+            // 가고있는 방향 rigid.velocity.normalized*(크기)
+            rigid.velocity = new Vector2(rigid.velocity.normalized.x*0.5f, rigid.velocity.y);
+        }
+
+        // 방향 전환(Direction Sprite)
+        if (Input.GetButtonDown("Horizontal"))
+        {
+            spRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+        }
     }
 
     void FixedUpdate()
