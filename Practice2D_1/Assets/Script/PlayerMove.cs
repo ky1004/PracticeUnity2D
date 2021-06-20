@@ -7,11 +7,13 @@ public class PlayerMove : MonoBehaviour
     public float maxSpeed;
     Rigidbody2D rigid;
     SpriteRenderer spRenderer;
+    Animator ani;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spRenderer = GetComponent<SpriteRenderer>();
+        ani = GetComponent<Animator>();
     }
 
     void Update()
@@ -26,6 +28,17 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetButtonDown("Horizontal"))
         {
             spRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+        }
+
+        // Animation
+        if(Mathf.Abs(rigid.velocity.x) < 0.3)
+        {
+            // ´ÜÀ§°ªÀÌ 0ÀÏ¶§ : ¸ØÃèÀ» ¶§
+            ani.SetBool("IsWalking", false);
+        }
+        else
+        {
+            ani.SetBool("IsWalking", true);
         }
     }
 
