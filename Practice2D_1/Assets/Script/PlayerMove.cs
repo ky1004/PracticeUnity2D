@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float maxSpeed;
+    public float jumpPower;
     Rigidbody2D rigid;
     SpriteRenderer spRenderer;
     Animator ani;
@@ -18,6 +19,12 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        // Jump
+        if (Input.GetButtonDown("Jump"))
+        {
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        }
+
         if (Input.GetButtonUp("Horizontal"))
         {
             // 가고있는 방향 rigid.velocity.normalized*(크기)
