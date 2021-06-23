@@ -20,9 +20,11 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         // Jump
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !ani.GetBool("IsJumping"))
         {
+            // 점프키를 누른상태 && 점프중이 아닌 상태 였을 때 발동 (무한점프 제어)
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            ani.SetBool("IsJumping", true);
         }
 
         if (Input.GetButtonUp("Horizontal"))
@@ -65,5 +67,24 @@ public class PlayerMove : MonoBehaviour
         {
             rigid.velocity = new Vector2(maxSpeed*(-1), rigid.velocity.y);
         }
+
+        // Landing Platform
+        if(rigid.velocity.y < 0) // y값이 음수일 경우에만
+        {
+            Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
+            // 단위벡터 : 1
+            // 빔을 쏘고 맞은 오브젝트에 대한 정보
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
+            if (rayHit.collider != null)
+            {
+                // RayCastHit변수의 콜라이더로 검색 확인 기능
+                if (rayHit.distance < 0.5f)
+                {
+                    // 확인을 위한 코드 Debug.Log(rayHit.collider.name);
+                    ani.SetBool("IsJumping", false);
+                }
+            }
+        }
+        
     }
 }
