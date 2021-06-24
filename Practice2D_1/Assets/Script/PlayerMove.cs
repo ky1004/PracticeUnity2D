@@ -55,7 +55,8 @@ public class PlayerMove : MonoBehaviour
     {
         // Move by Control 
         float h = Input.GetAxisRaw("Horizontal");
-        rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse);
+        // 경사로를 넘지 못하는 경우엔 Vector2.right * h의 뒤에 * 2를 작성한다
+        rigid.AddForce(Vector2.right * h * 2, ForceMode2D.Impulse);
 
 
         // y축 값에 0을 넣으면 점프시에 멈출 수 있으니 rigid.velocity.y를 넣음
