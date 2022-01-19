@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+
+    public int dmg;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 총알 제거 경계를 위한 새로운 태그 조건
