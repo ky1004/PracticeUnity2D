@@ -11,15 +11,17 @@ public class Player : MonoBehaviour
     public float maxShotDelay; // 실제 딜레이(값 높으면 높을수록 총알 딜레이 간격 증가)
     public float curShotDelay; // 한발 쏜 후의 딜레이
 
+    /* 총알 오브젝트 변수 */
+    public GameObject bulletObjA;
+    public GameObject bulletObjB;
+
     /* 경계 구분을 위한 변수 */
     public bool isTouchTop;
     public bool isTouchBottom;
     public bool isTouchLeft;
     public bool isTouchRight;
 
-    /* 총알 오브젝트 변수 */
-    public GameObject bulletObjA;
-    public GameObject bulletObjB;
+    public GameManager manager;
 
     Animator anim;
 
@@ -143,7 +145,12 @@ public class Player : MonoBehaviour
                     break;
 
             }
-        }  
+        }
+        else if(collision.gameObject.tag == "Enemy"|| collision.gameObject.tag == "EnemyBullet")
+        {
+            manager.RespawnPlayer();
+            gameObject.SetActive(false);
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
