@@ -414,6 +414,7 @@ MonoBehaviour:
   isTouchBottom: 0
   isTouchLeft: 0
   isTouchRight: 0
+  manager: {fileID: 1772750306}
 --- !u!212 &513418348
 SpriteRenderer:
   m_ObjectHideFlags: 0
