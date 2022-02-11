@@ -14,11 +14,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - Enemy
   - Platform
+  - Enemy
   - Player
   - PlayerDamaged
+  - 
   - 
   - 
   - 

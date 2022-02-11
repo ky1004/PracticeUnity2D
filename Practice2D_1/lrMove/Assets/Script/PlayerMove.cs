@@ -26,7 +26,7 @@ public class PlayerMove : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             ani.SetBool("IsJumping", true);
         }
-
+        // Stop Speed
         if (Input.GetButtonUp("Horizontal"))
         {
             // 가고있는 방향 rigid.velocity.normalized*(크기)
@@ -34,7 +34,8 @@ public class PlayerMove : MonoBehaviour
         }
 
         // 방향 전환(Direction Sprite)
-        if (Input.GetButtonDown("Horizontal"))
+        // GetButtonDown으로 작성시에 문워크하는 버그 발생하므로 GetButton으로 수정
+        if (Input.GetButton("Horizontal"))
         {
             spRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
         }
@@ -95,6 +96,12 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.Log("플레이어가 맞았습니다");
         }    
+    }
+
+    // 피격 시
+    void OnDamaged()
+    {
+        gameObject.layer = 11;
     }
 
 }
