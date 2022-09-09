@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
     public float maxShotDelay; // 실제 딜레이(값 높으면 높을수록 총알 딜레이 간격 증가)
     public float curShotDelay; // 한발 쏜 후의 딜레이
 
+    /* 목숨과 점수 변수 */
+    public int life;
+    public int score;
+
     /* 총알 오브젝트 변수 */
     public GameObject bulletObjA;
     public GameObject bulletObjB;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class GameManager : MonoBehaviour
     public float curSpawnDelay; // 현재 흐르는 딜레이시간
 
     public GameObject player;
+    public Text scoreText;
+    public Image[] lifeImage;
+    public GameObject[] gameOverSet;
+
     void Update()
     {
         curSpawnDelay += Time.deltaTime;    
