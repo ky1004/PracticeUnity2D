@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     public bool isTouchRight;
 
     public GameManager manager;
-
+    public bool isHit;
     Animator anim;
 
     void Awake()
@@ -152,8 +152,23 @@ public class Player : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Enemy"|| collision.gameObject.tag == "EnemyBullet")
         {
-            manager.RespawnPlayer();
+            if (isHit)
+                return;
+
+            isHit = true;
+            life--;
+            manager.UpdateLifeIcon(life);
+
+            if(life == 0)
+            {
+                manager.GameOver();
+            }
+            else
+            {
+                manager.RespawnPlayer();
+            }
             gameObject.SetActive(false);
+            Destroy(collision.gameObject);
         }
     }
 

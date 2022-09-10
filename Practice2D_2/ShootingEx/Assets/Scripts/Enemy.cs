@@ -93,8 +93,8 @@ public class Enemy : MonoBehaviour
             Vector3 dirVecL = player.transform.position - (transform.position + Vector3.left * 0.3f); // 목표물 방향 = 목표물 위치 - 자신의 위치
             // normalized : 벡터가 단위 값(1)로 변환된 변수
             // 방향은 그대로 유지, 크기는 1로
-            rigidR.AddForce(dirVecR.normalized * 10, ForceMode2D.Impulse);
-            rigidL.AddForce(dirVecL.normalized * 10, ForceMode2D.Impulse);
+            rigidR.AddForce(dirVecR.normalized * 4, ForceMode2D.Impulse);
+            rigidL.AddForce(dirVecL.normalized * 4, ForceMode2D.Impulse);
         }
 
         curShotDelay = 0; // 총알 쏜 다음에는 딜레이 변수 0으로 초기화

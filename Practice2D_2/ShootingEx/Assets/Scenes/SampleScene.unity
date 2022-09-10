@@ -497,7 +497,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 324928302}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1772750306}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GameRetry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &324928302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1280,7 +1292,7 @@ GameObject:
   - component: {fileID: 825231276}
   - component: {fileID: 825231275}
   m_Layer: 5
-  m_Name: Life Icon (2)
+  m_Name: Life Icon 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2146,6 +2158,12 @@ MonoBehaviour:
   maxSpawnDelay: 2
   curSpawnDelay: 0
   player: {fileID: 513418346}
+  scoreText: {fileID: 207443228}
+  lifeImage:
+  - {fileID: 1793936844}
+  - {fileID: 1919533721}
+  - {fileID: 825231275}
+  gameOverSet: {fileID: 1047467605}
 --- !u!1 &1775392367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2188,7 +2206,7 @@ GameObject:
   - component: {fileID: 1793936845}
   - component: {fileID: 1793936844}
   m_Layer: 5
-  m_Name: Life Icon
+  m_Name: Life Icon 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2342,7 +2360,7 @@ GameObject:
   - component: {fileID: 1919533722}
   - component: {fileID: 1919533721}
   m_Layer: 5
-  m_Name: Life Icon (1)
+  m_Name: Life Icon 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
