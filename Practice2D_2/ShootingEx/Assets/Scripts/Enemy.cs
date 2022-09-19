@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     public float curShotDelay; // 한발 쏜 후의 딜레이
     public GameObject bulletObjA;
     public GameObject bulletObjB;
+    public GameObject itemCoin;
+    public GameObject itemPower;
+    public GameObject itemBoom;
     public GameObject player;
 
     SpriteRenderer spriteRenderer;
@@ -32,8 +35,12 @@ public class Enemy : MonoBehaviour
         // rigid.velocity = Vector2.down * speed; // velocity값을 할당하여 속도 부여
     }
 
-    void OnHit(int dmg)
+    public void OnHit(int dmg)
     {
+        // health가 0보다 낮으면 예외처리
+        if (health <= 0)
+            return;
+
         health -= dmg;
         // 평소 스프라이트는 0, 피격은 1
         spriteRenderer.sprite = sprites[1];
@@ -44,6 +51,29 @@ public class Enemy : MonoBehaviour
         {
             Player playerLogic = player.GetComponent<Player>();
             playerLogic.score += enemyScore;
+
+            // 아이템 드롭 랜덤 주기
+            int rd = Random.Range(0, 10);
+            if (rd < 3)
+            {
+                Debug.Log("아이템 x");
+            }
+            else if (rd < 6)
+            {
+                // Coin
+                Instantiate(itemCoin, transform.position, itemCoin.transform.rotation);
+            }
+            else if (rd < 8)
+            {
+                // Power
+                Instantiate(itemPower, transform.position, itemPower.transform.rotation);
+            }
+            else if (rd < 10)
+            {
+                // Boom
+                Instantiate(itemBoom, transform.position, itemBoom.transform.rotation);
+            }
+
             Destroy(gameObject);
         }
     }
