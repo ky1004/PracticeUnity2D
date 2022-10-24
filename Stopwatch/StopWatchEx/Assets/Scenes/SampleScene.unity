@@ -206,9 +206,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420030}
-        m_TargetAssemblyTypeName: Stopwatch, Assembly-CSharp
-        m_MethodName: StartPauseBtn
+      - m_Target: {fileID: 1922718691}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: StartTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -333,7 +333,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -349,21 +348,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f540e67e74ef748a9f26e203126d20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeStart: 0
-  timeText: {fileID: 715633456}
-  startPauseText: {fileID: 1887428959}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -570,7 +554,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uCD08\uAE30\uD654"
+  m_Text: "\uBA48\uCDA4"
 --- !u!222 &1247934756
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -592,7 +576,7 @@ GameObject:
   - component: {fileID: 1780887184}
   - component: {fileID: 1780887183}
   m_Layer: 5
-  m_Name: ResetBtn
+  m_Name: StopBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -662,9 +646,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420030}
-        m_TargetAssemblyTypeName: Stopwatch, Assembly-CSharp
-        m_MethodName: ResetBtn
+      - m_Target: {fileID: 1922718691}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: StopTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -803,6 +787,7 @@ GameObject:
   - component: {fileID: 1922718689}
   - component: {fileID: 1922718688}
   - component: {fileID: 1922718687}
+  - component: {fileID: 1922718691}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -893,3 +878,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1922718691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922718686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a9384c5c9c7564baddb96bdb84518b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMinutes: 1
+  currentTimeText: {fileID: 715633456}
