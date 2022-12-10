@@ -14,7 +14,11 @@ public class Order : MonoBehaviour
         this.originOrder = originOrder;
         SetOrder(originOrder);
     }
-
+    /*
+     * 카드가 확대될 때 맨 앞으로 와야함 - SetOrder를 100을 줌
+     * isMostFront가 True면 100 아니면 originOrder
+     * 최초 실행에는 originOrder를 실행하게 함
+     */
     public void SetMostFrontOrder(bool isMostFront)
     {
         SetOrder(isMostFront ? 100 : originOrder);
