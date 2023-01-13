@@ -10,6 +10,10 @@ public class CardManager : MonoBehaviour
     void Awake() => Inst = this;
 
     [SerializeField] ItemSO itemSO;
+    [SerializeField] GameObject cardPrefab; // 카드 프리펩을 참조하기 위함
+    [SerializeField] List<Card> myCards;
+    [SerializeField] List<Card> otherCards;
+
 
     List<Item> itemBuffer;
 
@@ -24,6 +28,7 @@ public class CardManager : MonoBehaviour
         if (itemBuffer.Count == 0)
             SetupItemBuffer();
 
+        // 카드를 뽑을 때마다 맨 앞의 카드를 지우고 뽑아냄
         Item item = itemBuffer[0];
         itemBuffer.RemoveAt(0);
         return item;
@@ -57,6 +62,28 @@ public class CardManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Keypad1))
-            print(PopItem().name);
+            AddCard(true); // 호출테스트
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+            AddCard(false);
+    }
+
+    // 내가 AddCard한거랑 적이 AddCard하는거랑은 다르다
+    void AddCard(bool isMine)
+    {
+        var cardObject = Instantiate(cardPrefab, Vector3.zero, Quaternion.identity);
+        var card = cardObject.GetComponent<Card>();
+        card.Setup(PopItem(), isMine);
+        (isMine ? myCards : otherCards).Add(card);
+    }
+
+    // Order 정렬
+    void SetOriginOrder(bool isMine)
+    {
+        int count = isMine ? myCards.Count : otherCards.Count;
+        for (int i = 0; i < count; i++)
+        {
+            var targetCard = isMine ? myCards[i] : otherCards[i];
+            targetCard?.GetComponent<Order>().SetOriginOrder(i);
+        }
     }
 }
